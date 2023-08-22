@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppearanceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('auth')->group(function () {
    Route::post('login', [AuthController::class, 'login']);
+});
+
+Route::middleware('auth:sanctum')->prefix('appearances')->group(function () {
+    Route::post('/', [AppearanceController::class, 'create']);
 });
 
 Route::prefix('users')->group(function () {
