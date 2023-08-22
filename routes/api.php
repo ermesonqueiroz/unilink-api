@@ -31,4 +31,5 @@ Route::prefix('users')->group(function () {
 
 Route::middleware('auth:sanctum')->prefix('links')->group(function () {
     Route::post('/', [LinkController::class, 'create']);
+    Route::patch('/{id}', [LinkController::class, 'update']);
 });
