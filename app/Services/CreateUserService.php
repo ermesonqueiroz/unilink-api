@@ -22,7 +22,7 @@ class CreateUserService
             'password' => $data['password']
         ]);
 
-        return Auth::user()->createToken($data['username'])->plainTextToken;
+        return Auth::user()->createToken($data['email'])->plainTextToken;
     }
 
     private function validateData(array $data): void

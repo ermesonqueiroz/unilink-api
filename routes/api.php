@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+Route::prefix('auth')->group(function () {
+   Route::post('login', [AuthController::class, 'login']);
+});
 
 Route::prefix('users')->group(function () {
    Route::post('/', [UserController::class, 'create']);
