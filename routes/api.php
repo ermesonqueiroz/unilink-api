@@ -21,15 +21,17 @@ Route::prefix('auth')->group(function () {
    Route::post('login', [AuthController::class, 'login']);
 });
 
-Route::middleware('auth:sanctum')->prefix('appearances')->group(function () {
-    Route::post('/', [AppearanceController::class, 'create']);
-});
-
 Route::prefix('users')->group(function () {
    Route::post('/', [UserController::class, 'create']);
 });
 
-Route::middleware('auth:sanctum')->prefix('links')->group(function () {
-    Route::post('/', [LinkController::class, 'create']);
-    Route::patch('/{id}', [LinkController::class, 'update']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::prefix('appearances')->group(function () {
+        Route::post('/', [AppearanceController::class, 'create']);
+    });
+
+    Route::prefix('links')->group(function () {
+        Route::post('/', [LinkController::class, 'create']);
+        Route::patch('/{id}', [LinkController::class, 'update']);
+    });
 });
