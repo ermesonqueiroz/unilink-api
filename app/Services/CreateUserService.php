@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\UserEmailAlreadyTakenException;
 use App\Models\User;
 use App\Exceptions\InvalidUserEmailException;
 use App\Exceptions\InvalidUserUsernameException;
@@ -33,7 +34,7 @@ class CreateUserService
         if (!$this->usernameIsValid($username)) throw new InvalidUserUsernameException($username);
         if (!$this->emailIsValid($email)) throw new InvalidUserEmailException($email);
         if ($this->usernameAlreadyTaken($username)) throw new UserUsernameAlreadyTakenException($username);
-        if ($this->emailAlreadyTaken($email)) throw new UserUsernameAlreadyTakenException($username);
+        if ($this->emailAlreadyTaken($email)) throw new UserEmailAlreadyTakenException($email);
     }
 
     private function usernameIsValid(string $username): bool

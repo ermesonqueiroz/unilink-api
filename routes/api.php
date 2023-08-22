@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppearanceController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LinkController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,8 @@ Route::middleware('auth:sanctum')->prefix('appearances')->group(function () {
 
 Route::prefix('users')->group(function () {
    Route::post('/', [UserController::class, 'create']);
+});
+
+Route::middleware('auth:sanctum')->prefix('links')->group(function () {
+    Route::post('/', [LinkController::class, 'create']);
 });

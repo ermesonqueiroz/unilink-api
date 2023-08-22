@@ -9,8 +9,8 @@ use Illuminate\Routing\ResponseFactory;
 
 class UserUsernameAlreadyTakenException extends Exception
 {
-    public function render(string $email): Application|Response|ResponseFactory
+    public function render(string $username): Application|Response|ResponseFactory
     {
-        return response([ 'error' => "The email \"$email\" already in use." ], 400);
+        return response([ 'error' => "The username \"$username\" already in use." ], 400);
     }
 }
