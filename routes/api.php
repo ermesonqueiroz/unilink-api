@@ -28,6 +28,7 @@ Route::prefix('users')->group(function () {
 Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('appearances')->group(function () {
         Route::post('/', [AppearanceController::class, 'create']);
+        Route::patch('/', [AppearanceController::class, 'update']);
     });
 
     Route::prefix('links')->group(function () {
