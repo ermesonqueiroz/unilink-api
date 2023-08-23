@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('button_color');
             $table->string('button_text_color');
             $table->foreignId('user_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
