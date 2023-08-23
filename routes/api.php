@@ -33,5 +33,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('links')->group(function () {
         Route::post('/', [LinkController::class, 'create']);
         Route::patch('/{id}', [LinkController::class, 'update']);
+        Route::delete('/{id}', [LinkController::class, 'delete']);
     });
 });

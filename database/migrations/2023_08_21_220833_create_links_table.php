@@ -15,6 +15,7 @@ return new class extends Migration
             $table->boolean('active')->default(true);
             $table->string('next_link_id')->nullable()->default(null);
             $table->foreignId('user_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
