@@ -21,7 +21,8 @@ class LinkController extends Controller
         return new LinkResource($link);
     }
 
-    public function update(UpdateLinkRequest $updateLinkRequest,
+    public function update(
+        UpdateLinkRequest $updateLinkRequest,
         int $id,
         UpdateLinkService $updateLinkService
     ): LinkResource
