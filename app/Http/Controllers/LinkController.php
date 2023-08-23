@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\CreateLinkRequest;
 use App\Http\Requests\UpdateLinkRequest;
 use App\Http\Resources\LinkResource;
@@ -32,7 +31,7 @@ class LinkController extends Controller
         return new LinkResource($link);
     }
 
-    public function delete(Request $deleteRequest, int $id, DeleteLinkService $deleteLinkService): void
+    public function delete(int $id, DeleteLinkService $deleteLinkService): void
     {
         $deleteLinkService->run($id);
     }
