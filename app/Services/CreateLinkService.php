@@ -11,7 +11,10 @@ class CreateLinkService
     public function run(array $data): Link
     {
         $this->validateData($data);
-        return Auth::user()->links()->create($data);
+        return Auth::user()->links()->create([
+            ...$data,
+            "active" => true
+        ]);
     }
 
     private function validateData(array $data): void

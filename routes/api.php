@@ -22,12 +22,20 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::prefix('users')->group(function () {
-   Route::post('/', [UserController::class, 'create']);
+    Route::post('/', [UserController::class, 'create']);
+});
+
+Route::prefix('profiles')->group(function () {
+    Route::get('/{id}', [UserController::class, 'getProfile']);
 });
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::prefix('users')->group(function () {
+        Route::get('/', [UserController::class, 'findById']);
+    });
+
     Route::prefix('appearances')->group(function () {
-        Route::post('/', [AppearanceController::class, 'create']);
+        Route::get('/', [AppearanceController::class, 'findByUserId']);
         Route::patch('/', [AppearanceController::class, 'update']);
         Route::delete('/', [AppearanceController::class, 'delete']);
     });

@@ -13,16 +13,6 @@ use Illuminate\Http\Request;
 
 class AppearanceController extends Controller
 {
-    public function create(
-        CreateAppearanceRequest $createAppearanceRequest,
-        CreateAppearanceService $createAppearanceService
-    ): AppearanceResource
-    {
-        $data = $createAppearanceRequest->validated();
-        $appearance = $createAppearanceService->run($data);
-        return new AppearanceResource($appearance);
-    }
-
     public function update(
         UpdateAppearanceRequest $updateAppearanceRequest,
         UpdateAppearanceService $updateAppearanceService

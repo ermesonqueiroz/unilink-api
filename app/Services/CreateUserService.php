@@ -11,6 +11,13 @@ use Illuminate\Support\Facades\Auth;
 
 class CreateUserService
 {
+    private CreateAppearanceService $createAppearanceService;
+
+    public function __construct(CreateAppearanceService $createAppearanceService)
+    {
+        $this->createAppearanceService = $createAppearanceService;
+    }
+
     public function run(array $data): string
     {
         $this->validateData($data);
@@ -21,6 +28,14 @@ class CreateUserService
         Auth::attempt([
             'email' => $data['email'],
             'password' => $data['password']
+        ]);
+
+        $this->createAppearanceService->run([
+            'text_color' => '#000',
+            'background_color' => '#f1f2f6',
+            'button_color' => '#fff',
+            'button_text_color' => '#000',
+            'user_id' => $user->id
         ]);
 
         return Auth::user()->createToken($data['email'])->plainTextToken;
