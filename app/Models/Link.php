@@ -18,6 +18,10 @@ class Link extends Model
         'next_link_id'
     ];
 
+    protected $casts = [
+        'active' => 'boolean'
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
